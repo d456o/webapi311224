@@ -5,10 +5,12 @@ const morgan=require('morgan');
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-//const secure = require('./api/v1/middlewares/secure');
+console.log(process.env.GOOGLE_USE);
+
+const secure = require('./api/v1/middlewares/secure');
 
 
-//app.use(secure);
+app.use(secure);
 app.use('/product',productRouter);
 
 module.exports=app;
